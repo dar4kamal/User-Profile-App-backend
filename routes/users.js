@@ -5,8 +5,9 @@ const router = express.Router();
 
 // handlers
 const registerUser = require("../routeHandlers/registerUser");
+const loginUser = require("../routeHandlers/loginUser");
 
-// @route POST api/users
+// @route POST api/users/register
 // @desc Register new User
 // @access Public
 router.post(
@@ -22,6 +23,18 @@ router.post(
 		check("gender").isString().not().isEmpty(),
 	],
 	registerUser
+);
+
+// @route POST api/users/login
+// @desc Login User
+// @access Public
+router.post(
+	"/login",
+	[
+		check("email", "Please Enter a Valid Email Address").isEmail(),
+		check("password", "Password is required").not().isEmpty(),
+	],
+	loginUser
 );
 
 module.exports = router;
