@@ -6,6 +6,7 @@ const router = express.Router();
 const auth = require("../middlewares/auth");
 const forgetPassword = require("../routeHandlers/forgetPassword");
 const resetPassword = require("../routeHandlers/resetPassword");
+const editPassword = require("../routeHandlers/editPassword");
 
 // @route POST api/auth/forgetPass
 // @desc send otp to user's email when password is forgotten
@@ -26,6 +27,19 @@ router.post(
 		check("otpCode", "OTP code must be 4 digits").isLength({ min: 4, max: 4 }),
 	],
 	resetPassword
+);
+
+// @route POST api/auth/editPass
+// @desc change password either when password is forgottn or when editing password
+// @access private
+router.post(
+	"/editPass",
+	[
+		auth,
+		check("password", "password is required").not().isEmpty(),
+		check("passwordConfirm", "password confirm is required").not().isEmpty(),
+	],
+	editPassword
 );
 
 module.exports = router;
