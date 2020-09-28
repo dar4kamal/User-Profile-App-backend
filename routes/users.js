@@ -8,6 +8,7 @@ const auth = require("../middlewares/auth");
 const registerUser = require("../routeHandlers/registerUser");
 const loginUser = require("../routeHandlers/loginUser");
 const getUserData = require("../routeHandlers/getUserData");
+const editUser = require("../routeHandlers/editUser");
 
 // @route POST api/users/register
 // @desc Register new User
@@ -43,5 +44,10 @@ router.post(
 // @desc get user data
 // @access Public
 router.get("/", auth, getUserData);
+
+// @route PUT /api/users
+// @desc edit user data
+// @access Private
+router.put("/", auth, editUser);
 
 module.exports = router;
