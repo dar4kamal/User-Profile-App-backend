@@ -10,6 +10,17 @@ const otpData = new mongoose.Schema({
 	},
 });
 
+const address = new mongoose.Schema({
+	country: {
+		type: String,
+		default: "",
+	},
+	city: {
+		type: String,
+		default: "",
+	},
+});
+
 const UserSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -29,6 +40,7 @@ const UserSchema = new mongoose.Schema({
 		required: true,
 	},
 	otpData,
+	address,
 });
 
 module.exports = User = new mongoose.model("user", UserSchema);
