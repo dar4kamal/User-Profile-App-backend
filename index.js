@@ -17,7 +17,9 @@ app.get("/", (req, res) => {
 
 // routes
 const users = require("./routes/users");
+const auth = require("./routes/auth");
 
 app.use("/api/users", users);
+app.use("/api/auth", auth);
 
 app.listen(PORT, () => console.log(`Server Started on Port ${PORT}`));
