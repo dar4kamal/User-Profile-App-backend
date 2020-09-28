@@ -1,4 +1,6 @@
 {
 	"mongoURI": "mongodb+srv://admin:admin@dev-user-profile-app.dqutw.mongodb.net/<dbname>?retryWrites=true&w=majority",
-	"jwtToken": "admintoken"
+	"jwtToken": "admintoken",
+	"mailAccount": "nodeapp86@gmail.com",
+	"mailPassword": "gjglkwsompsjuajx"
 }
