@@ -3,9 +3,11 @@ const { check } = require("express-validator");
 
 const router = express.Router();
 
+const auth = require("../middlewares/auth");
 // handlers
 const registerUser = require("../routeHandlers/registerUser");
 const loginUser = require("../routeHandlers/loginUser");
+const getUserData = require("../routeHandlers/getUserData");
 
 // @route POST api/users/register
 // @desc Register new User
@@ -36,5 +38,10 @@ router.post(
 	],
 	loginUser
 );
+
+// @route GET /api/users
+// @desc get user data
+// @access Public
+router.get("/", auth, getUserData);
 
 module.exports = router;
