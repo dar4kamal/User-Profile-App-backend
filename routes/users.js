@@ -56,7 +56,7 @@ router.put("/", auth, editUser);
 // @access Private
 router.post(
 	"/image",
-	[auth, check("imageURl", "Image Url must be valid").isURL()],
+	[auth, check("imageUrl", "Image Url must be valid").isURL()],
 	editUserImage
 );
 
