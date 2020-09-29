@@ -41,6 +41,11 @@ const UserSchema = new mongoose.Schema({
 	},
 	otpData,
 	address,
+	imageUrl: {
+		type: String,
+		default:
+			"https://res.cloudinary.com/dar4kamal/image/upload/v1601398993/Paul-18-512_vvclwb.png",
+	},
 });
 
 module.exports = User = new mongoose.model("user", UserSchema);

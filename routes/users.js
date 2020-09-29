@@ -9,6 +9,7 @@ const registerUser = require("../routeHandlers/registerUser");
 const loginUser = require("../routeHandlers/loginUser");
 const getUserData = require("../routeHandlers/getUserData");
 const editUser = require("../routeHandlers/editUser");
+const editUserImage = require("../routeHandlers/editUserImage");
 
 // @route POST api/users/register
 // @desc Register new User
@@ -49,5 +50,14 @@ router.get("/", auth, getUserData);
 // @desc edit user data
 // @access Private
 router.put("/", auth, editUser);
+
+// @route PUT /api/users/image
+// @desc upload user image
+// @access Private
+router.post(
+	"/image",
+	[auth, check("imageURl", "Image Url must be valid").isURL()],
+	editUserImage
+);
 
 module.exports = router;
