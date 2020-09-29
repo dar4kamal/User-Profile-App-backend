@@ -1,5 +1,5 @@
 const express = require("express");
-
+const cors = require("cors");
 const connectDB = require("./config/db");
 
 const app = express();
@@ -10,6 +10,7 @@ connectDB();
 
 // MiddleWares
 app.use(express.json({ extended: false }));
+app.use(cors());
 
 app.get("/", (req, res) => {
 	res.send("user profile App backend");
