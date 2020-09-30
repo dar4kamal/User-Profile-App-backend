@@ -10,6 +10,8 @@ const loginUser = require("../routeHandlers/loginUser");
 const getUserData = require("../routeHandlers/getUserData");
 const editUser = require("../routeHandlers/editUser");
 const editUserImage = require("../routeHandlers/editUserImage");
+const getCountries = require("../routeHandlers/getCountries");
+const getCities = require("../routeHandlers/getCities");
 
 // @route POST api/users/register
 // @desc Register new User
@@ -52,5 +54,15 @@ router.post(
 	[auth, check("imageUrl", "Image Url must be valid").isURL()],
 	editUserImage
 );
+
+// @route GET /api/users/county
+// @desc get Countires
+// @access Public
+router.get("/country", getCountries);
+
+// @route GET /api/users/city
+// @desc get Countires
+// @access Public
+router.get("/city", getCities);
 
 module.exports = router;
