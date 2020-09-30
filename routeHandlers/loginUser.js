@@ -25,7 +25,15 @@ module.exports = async (req, res) => {
 			return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
 		// return JWT
 		const payload = {
-			userData: _.pick(user, ["_id", "name", "email", "gender"]),
+			userData: _.pick(user, [
+				"_id",
+				"name",
+				"email",
+				"gender",
+				"address",
+				"imageUrl",
+				"optData",
+			]),
 		};
 		jwt.sign(
 			payload,
