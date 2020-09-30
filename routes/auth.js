@@ -7,6 +7,7 @@ const user = require("../middlewares/user");
 const forgetPassword = require("../routeHandlers/forgetPassword");
 const resetPassword = require("../routeHandlers/resetPassword");
 const editPassword = require("../routeHandlers/editPassword");
+const removeUser = require("../routeHandlers/removeUser");
 
 // @route POST api/auth/forgetPass
 // @desc send otp to user's email when password is forgotten
@@ -41,5 +42,10 @@ router.post(
 	],
 	editPassword
 );
+
+// @route POST api/auth/remove
+// @desc remove user
+// @access private
+router.post("/remove", user, removeUser);
 
 module.exports = router;
