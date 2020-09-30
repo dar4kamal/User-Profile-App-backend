@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 
 const router = express.Router();
 
-const auth = require("../middlewares/auth");
+const user = require("../middlewares/user");
 const forgetPassword = require("../routeHandlers/forgetPassword");
 const resetPassword = require("../routeHandlers/resetPassword");
 const editPassword = require("../routeHandlers/editPassword");
@@ -13,7 +13,7 @@ const editPassword = require("../routeHandlers/editPassword");
 // @access private
 router.post(
 	"/forgetPass",
-	[auth, check("email", "Email is Required").isEmail()],
+	check("email", "Email is Required").isEmail(),
 	forgetPassword
 );
 
@@ -23,7 +23,7 @@ router.post(
 router.post(
 	"/resetPass",
 	[
-		auth,
+		user,
 		check("otpCode", "OTP code must be 4 digits").isLength({ min: 4, max: 4 }),
 	],
 	resetPassword
@@ -35,7 +35,7 @@ router.post(
 router.post(
 	"/editPass",
 	[
-		auth,
+		user,
 		check("password", "password is required").not().isEmpty(),
 		check("passwordConfirm", "password confirm is required").not().isEmpty(),
 	],

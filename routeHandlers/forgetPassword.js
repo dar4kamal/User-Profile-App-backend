@@ -44,7 +44,9 @@ module.exports = async (req, res) => {
 			user.otpData = { otpCode, date: sentDate };
 			await user.save();
 
-			res.status(200).json({ msg: "Email sent successfully" });
+			res
+				.status(200)
+				.json({ msg: "Email sent successfully", data: { email: user.email } });
 		} else {
 			console.error(error);
 			return res.status(500).json({ msg: "Email Service Error" });

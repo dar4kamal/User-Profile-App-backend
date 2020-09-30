@@ -33,10 +33,6 @@ router.post(
 // @desc Login User
 // @access Public
 router.post("/login", loginUser);
-// [
-// 		check("email", "Please Enter a Valid Email Address").isEmail(),
-// 		check("password", "Password is required").not().isEmpty(),
-// 	],
 
 // @route GET /api/users
 // @desc get user data
