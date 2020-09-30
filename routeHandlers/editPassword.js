@@ -4,7 +4,7 @@ const User = require("../models/User");
 module.exports = async (req, res) => {
 	try {
 		const { oldPassword, newPassword, passwordConfirm } = req.body;
-		const { email } = req.user;
+		const email = req.user;
 
 		// check if user's email exists
 		let user = await User.findOne({ email });
