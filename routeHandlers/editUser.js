@@ -1,3 +1,6 @@
+const _ = require("lodash");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const User = require("../models/User");
 
 module.exports = async (req, res) => {
@@ -17,7 +20,28 @@ module.exports = async (req, res) => {
 
 		await user.save();
 
-		res.status(200).json({ msg: "profile updated Successfully" });
+		// return JWT
+		const payload = {
+			userData: _.pick(user, [
+				"_id",
+				"name",
+				"email",
+				"gender",
+				"address",
+				"imageUrl",
+				"optData",
+			]),
+		};
+		let authToken;
+		jwt.sign(
+			payload,
+			config.get("jwtToken"),
+			{ expiresIn: 360000 },
+			(err, token) => {
+				if (err) throw err;
+				res.status(200).json({ msg: "profile updated Successfully", token });
+			}
+		);
 	} catch (err) {
 		console.error(err.message);
 		return res.status(500).json({ msg: "Server Error" });
