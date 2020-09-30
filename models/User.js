@@ -1,25 +1,25 @@
 const mongoose = require("mongoose");
 
-const otpData = new mongoose.Schema({
-	otpCode: {
-		type: String,
-	},
-	date: {
-		type: Date,
-		default: Date.now(),
-	},
-});
+// const otpData = new mongoose.Schema({
+// 	otpCode: {
+// 		type: String,
+// 	},
+// 	date: {
+// 		type: Date,
+// 		default: Date.now(),
+// 	},
+// });
 
-const address = new mongoose.Schema({
-	country: {
-		type: String,
-		default: "",
-	},
-	city: {
-		type: String,
-		default: "",
-	},
-});
+// const address = new mongoose.Schema({
+// 	country: {
+// 		type: String,
+// 		default: "",
+// 	},
+// 	city: {
+// 		type: String,
+// 		default: "",
+// 	},
+// });
 
 const UserSchema = new mongoose.Schema({
 	name: {
@@ -39,8 +39,25 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	otpData,
-	address,
+	otpData: {
+		otpCode: {
+			type: String,
+		},
+		date: {
+			type: Date,
+			default: Date.now(),
+		},
+	},
+	address: {
+		country: {
+			type: String,
+			default: "",
+		},
+		city: {
+			type: String,
+			default: "",
+		},
+	},
 	imageUrl: {
 		type: String,
 		default:
