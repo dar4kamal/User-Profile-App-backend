@@ -32,14 +32,11 @@ router.post(
 // @route POST api/users/login
 // @desc Login User
 // @access Public
-router.post(
-	"/login",
-	[
-		check("email", "Please Enter a Valid Email Address").isEmail(),
-		check("password", "Password is required").not().isEmpty(),
-	],
-	loginUser
-);
+router.post("/login", loginUser);
+// [
+// 		check("email", "Please Enter a Valid Email Address").isEmail(),
+// 		check("password", "Password is required").not().isEmpty(),
+// 	],
 
 // @route GET /api/users
 // @desc get user data
